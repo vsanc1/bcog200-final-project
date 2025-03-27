@@ -1,5 +1,9 @@
-import tkinter as tk 
-from PIL import image, ImageTk
+import turtle as t
 
-def set_background(window, image_path):
+YouScore=0
+You2Score=0
+
+window=t.Screen()
+window.title("Valeria Final Project Ping Pong")
+window.setup(800,600)
     
