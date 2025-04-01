@@ -2,6 +2,7 @@ import pygame
 
 pygame.init()
 
+# screen stuff
 window_width = 900
 window_height = 600
 
@@ -10,13 +11,16 @@ display = pygame.display.set_mode((window_width, window_height))
 bg = pygame.image.load("background.jpg")
 pygame.display.set_caption("Valeria Final Project Ping Pong")
 
+# game loop
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-pygame.quit
 
+# paddles stuff
+you_1 = pygame.Rect(30, 10)
+you_2 = pygame.Rect(30, 10)
 
 """
 #I WAS GOING TO USE TURTLE FOR THIS BUT I THINK PYGAME IS THE BETTER OPTION SO I AM KEEPING THIS HERE
