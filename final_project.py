@@ -1,4 +1,3 @@
-import turtle as t
 import pygame
 
 pygame.init()
@@ -13,11 +12,12 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+
+"""
 # window.title("Valeria Final Project Ping Pong")
 # window.setup(800, 600)
 # window.tracer(0)
-
-
 YouScore = 0
 You2Score = 0
 
@@ -34,3 +34,4 @@ paddle_2.shape("circle")
 paddle_2.shapesize(stretch_wid=5, stretch_len=1)
 paddle_2.penup()
 paddle_2.goto()
+"""
