@@ -4,14 +4,18 @@ pygame.init()
 
 window_width = 900
 window_height = 600
+
+font = pygame.font.SysFont("Comfortaa")
 display = pygame.display.set_mode((window_width, window_height))
 bg = pygame.image.load("background.jpg")
+pygame.display.set_caption("Valeria Final Project Ping Pong")
 
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+pygame.quit
 
 
 """
