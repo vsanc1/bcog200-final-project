@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-window_width = 800
+window_width = 900
 window_height = 600
 display = pygame.display.set_mode((window_width, window_height))
 bg = pygame.image.load("background.jpg")
@@ -15,6 +15,7 @@ while running:
 
 
 """
+#I WAS GOING TO USE TURTLE FOR THIS BUT I THINK PYGAME IS THE BETTER OPTION SO I AM KEEPING THIS HERE
 # window.title("Valeria Final Project Ping Pong")
 # window.setup(800, 600)
 # window.tracer(0)
