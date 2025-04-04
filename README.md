@@ -10,6 +10,6 @@ hello!
 CHECKIN-2:
 hello!
 
--Documentation file: So, my project is pretty much the same. I have decided to add background music and sound effects when the paddle hits the ball, which will probably be implemented into the game loop function and then the paddle/ball hit loop function (which I have not created yet). There will still be a power up function which increases paddle length and speed. I will have to make a function to connect the W S and up and down arrow keys to control both paddles.
+-Documentation file: So, my project is pretty much the same. I have created a window with a nice background and the paddles. I am going to use pygame for my project. I am going to add a function for the ball, and a function that allows the ball to bounce off of the paddles. I have decided to add background music and sound effects when the paddle hits the ball, which will probably be implemented into the game loop function and then the paddle/ball hit loop function (which I have not created yet). There will still be a power up function which increases paddle length and speed. I will have to make a function to connect the W S and up and down arrow keys to control both paddles.
 
 -Test file: You can test the file by running it in your terminal. A screen should show up with two paddles, which you will be able to control with keys in the future. 
