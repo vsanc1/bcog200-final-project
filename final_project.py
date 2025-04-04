@@ -36,4 +36,4 @@ while True:
     pygame.draw.rect(display, "white", you_2)
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(60)  # fps
