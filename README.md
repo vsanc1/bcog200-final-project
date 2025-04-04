@@ -11,4 +11,4 @@ CHECKIN-2:
 hello!
 
 -Documentation file:
--Test file:
+-Test file: You can test the file by running it in your terminal. A screen should show up with two paddles. 
