@@ -12,7 +12,8 @@ hello!
 hello!
 
 ### Documentation file: 
-So, my project is pretty much the same. I have created a window with a nice background and the paddles. 
+So, my project is pretty much the same. I have created a window with a nice background and the paddles.  
+ 
 --> I am going to use pygame for my project.  
 
 -->I am going to add a function for the ball, and a function that allows the ball to bounce off of the paddles.  
