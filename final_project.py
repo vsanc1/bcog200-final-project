@@ -23,7 +23,7 @@ you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
 
 # game loop
 while True:
-    keys_pressed = pygame.key.press()
+    keys_pressed = pygame.key.get_pressed()
 
     if keys_pressed[pygame.K_UP]:
         if you_1.top > 0:
