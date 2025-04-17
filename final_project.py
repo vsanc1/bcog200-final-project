@@ -23,6 +23,15 @@ you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
 
 # game loop
 while True:
+    keys_pressed = pygame.key.press()
+
+    if keys_pressed[pygame.K_UP]:
+        if you_1.top > 0:
+            you_1.top -= 2
+    if keys_pressed[pygame.K_DOWN]:
+        if you_1.bottom < height:
+            you_1.bottom += 2
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
