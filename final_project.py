@@ -18,8 +18,14 @@ clock = pygame.time.Clock()
 
 
 # paddles stuff
-you_1 = pygame.Rect(width - 800, int(height / 2 - 50), 10, 100)
-you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
+class Paddle(pygame.sprite.Sprite):
+    def __init__(self, color, width, height)
+    you_1 = pygame.Rect(width - 800, int(height / 2 - 50), 10, 100)
+    you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
+
+    pygame.draw.rect(display, "white", you_1)
+    pygame.draw.rect(display, "white", you_2)
+
 
 # game loop
 while True:
@@ -31,9 +37,6 @@ while True:
     display.fill((0, 0, 0))
     if bg:
         display.blit(bg, (0, 0))
-
-    pygame.draw.rect(display, "white", you_1)
-    pygame.draw.rect(display, "white", you_2)
 
     pygame.display.update()
     clock.tick(60)  # fps
