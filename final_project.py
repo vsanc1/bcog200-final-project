@@ -37,6 +37,18 @@ while True:
             pygame.quit()
             sys.exit()
 
+    if keys_pressed[pygame.K_w]:
+        if you_2.top > 0:
+            you_2.top -= 2
+    if keys_pressed[pygame.K_s]:
+        if you_2.bottom < height:
+            you_2.bottom += 2
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
     display.fill((0, 0, 0))
     if bg:
         display.blit(bg, (0, 0))
