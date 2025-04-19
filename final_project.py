@@ -21,7 +21,7 @@ clock = pygame.time.Clock()
 you_1 = pygame.Rect(width - 800, int(height / 2 - 50), 10, 100)
 you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
 
-# game loop
+# game loop with attaching keys to paddles
 while True:
     keys_pressed = pygame.key.get_pressed()
 
