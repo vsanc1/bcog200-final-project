@@ -29,6 +29,10 @@ def paddles(height, width):
     return you_1, you_2
 
 
+def ball():
+    pass
+
+
 # game loop with attaching keys to paddles
 def game_loop(you_1, you_2, height, bg, display):
     clock = pygame.time.Clock()
@@ -75,10 +79,9 @@ def main():
     height, width, display, bg = (
         screen_setup()
     )  # used chat gpt to help debug main functions here
-
     you_1, you_2 = paddles(height, width)
-
     game_loop(you_1, you_2, height, bg, display)
+    ball
 
 
 if __name__ == "__main__":
