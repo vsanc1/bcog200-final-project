@@ -17,15 +17,19 @@ def screen_setup():
 
     clock = pygame.time.Clock()
 
+    return height, width
+
 
 # paddles stuff
-def paddles():
+def paddles(height, width):
     you_1 = pygame.Rect(width - 800, int(height / 2 - 50), 10, 100)
     you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
 
+    return you_1, you_2
+
 
 # game loop with attaching keys to paddles
-def game_loop():
+def game_loop(you_1, you_2):
     while True:
         keys_pressed = pygame.key.get_pressed()
 
@@ -66,8 +70,8 @@ def game_loop():
 
 def main():
     screen_setup
-    paddles
-    game_loop
+    paddles(you_1, you_2)
+    you_1, you_2 = game_loop
 
 
 if __name__ == "__main__":
