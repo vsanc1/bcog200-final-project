@@ -7,7 +7,8 @@ pygame.init()
 
 
 def screen_setup():
-    width, height = 900, 600
+    width = 900
+    height = 600
 
     display = pygame.display.set_mode((900, 600))
     font = pygame.font.SysFont("Comfortaa", int(width / 20))
@@ -15,9 +16,9 @@ def screen_setup():
     bg = pygame.transform.scale(bg, (width, height))
     pygame.display.set_caption("Valeria Final Project Ping Pong")
 
-    clock = pygame.time.Clock()
+    # clock = pygame.time.Clock()
 
-    return height, width
+    return height, width, display, bg
 
 
 # paddles stuff
@@ -29,16 +30,18 @@ def paddles(height, width):
 
 
 # game loop with attaching keys to paddles
-def game_loop(you_1, you_2):
+def game_loop(you_1, you_2, height, bg, display):
+    clock = pygame.time.Clock()
+
     while True:
         keys_pressed = pygame.key.get_pressed()
 
         if keys_pressed[pygame.K_UP]:
-            if you_1.top > 0:
-                you_1.top -= 2
+            if you_2.top > 0:
+                you_2.top -= 2
         if keys_pressed[pygame.K_DOWN]:
-            if you_1.bottom < height:
-                you_1.bottom += 2
+            if you_2.bottom < height:
+                you_2.bottom += 2
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -46,11 +49,11 @@ def game_loop(you_1, you_2):
                 sys.exit()
 
         if keys_pressed[pygame.K_w]:
-            if you_2.top > 0:
-                you_2.top -= 2
+            if you_1.top > 0:
+                you_1.top -= 2
         if keys_pressed[pygame.K_s]:
-            if you_2.bottom < height:
-                you_2.bottom += 2
+            if you_1.bottom < height:
+                you_1.bottom += 2
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -69,9 +72,17 @@ def game_loop(you_1, you_2):
 
 
 def main():
-    screen_setup
-    paddles(you_1, you_2)
-    you_1, you_2 = game_loop
+    height, width, display, bg = (
+        screen_setup()
+    )  # Correctly call and unpack screen_setup()
+
+    you_1, you_2 = paddles(height, width)  # Pass height and width into paddles()
+
+    game_loop(you_1, you_2, height, bg, display)  # Properly call the game loop
+
+    # screen_setup(height, width, display, bg)
+    # height, width = paddles(you_1, you_2)
+    # you_1, you_2, height, display, bg = game_loop
 
 
 if __name__ == "__main__":
