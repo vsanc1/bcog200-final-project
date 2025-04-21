@@ -74,15 +74,11 @@ def game_loop(you_1, you_2, height, bg, display):
 def main():
     height, width, display, bg = (
         screen_setup()
-    )  # Correctly call and unpack screen_setup()
+    )  # used chat gpt to help debug main functions here
 
-    you_1, you_2 = paddles(height, width)  # Pass height and width into paddles()
+    you_1, you_2 = paddles(height, width)
 
-    game_loop(you_1, you_2, height, bg, display)  # Properly call the game loop
-
-    # screen_setup(height, width, display, bg)
-    # height, width = paddles(you_1, you_2)
-    # you_1, you_2, height, display, bg = game_loop
+    game_loop(you_1, you_2, height, bg, display)
 
 
 if __name__ == "__main__":
