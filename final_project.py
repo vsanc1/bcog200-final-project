@@ -70,11 +70,11 @@ def game_loop(you_1, you_2, height, bg, display):
         keys_pressed = pygame.key.get_pressed()
 
         if keys_pressed[pygame.K_UP]:
-            if you_2.top > 0:
-                you_2.top -= 2
+            if you_2.rect.top > 0:
+                you_2.rect.top -= 2
         if keys_pressed[pygame.K_DOWN]:
-            if you_2.bottom < height:
-                you_2.bottom += 2
+            if you_2.rect.bottom < height:
+                you_2.rect.bottom += 2
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
