@@ -41,11 +41,15 @@ class Paddle:
 
 class Ball:
     def __init__(self, x, y, radius=10, speed=3):
-        self.ball = pygame.Surface(x, y, radius=10)
+        self.ball = pygame.Rect(x, y, radius=10)
         self.speed = 3
+        self.radius = radius
 
     def move(self):
-        pass
+        self.rect.x += self.speed
+
+    def draw(self, display):
+        pygame.draw.ellipse(display, "white", self.rect)
 
 
 """
@@ -82,11 +86,11 @@ def game_loop(you_1, you_2, height, bg, display):
                 sys.exit()
 
         if keys_pressed[pygame.K_w]:
-            if you_1.top > 0:
-                you_1.top -= 2
+            if you_1.rect.top > 0:
+                you_1.rect.top -= 2
         if keys_pressed[pygame.K_s]:
-            if you_1.bottom < height:
-                you_1.bottom += 2
+            if you_1.rect.bottom < height:
+                you_1.rect.bottom += 2
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
