@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 pygame.init()
 
@@ -50,14 +51,19 @@ class Ball:
         self.ball.y += self.speed_y
 
     def draw(self, display):
-        pygame.draw.ellipse(display, "yellow", self.ball)
+        pygame.draw.ellipse(display, "#66ccff", self.ball)
 
 
 # game loop with attaching keys to paddles
-def game_loop(you_1, you_2, height, bg, display):
+def game_loop(you_1, you_2, ball, width, height, bg, display, speed_X, speed_y):
     clock = pygame.time.Clock()
 
     while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
         keys_pressed = pygame.key.get_pressed()
 
         if keys_pressed[pygame.K_UP]:
@@ -67,11 +73,6 @@ def game_loop(you_1, you_2, height, bg, display):
             if you_2.rect.bottom < height:
                 you_2.rect.bottom += 2
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
         if keys_pressed[pygame.K_w]:
             if you_1.rect.top > 0:
                 you_1.rect.top -= 2
@@ -79,10 +80,12 @@ def game_loop(you_1, you_2, height, bg, display):
             if you_1.rect.bottom < height:
                 you_1.rect.bottom += 2
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+        ball.move()
+
+        if Ball >= height:
+            speed_x = -1
+        if Ball <= 0:
+            speed_y = 1
 
         display.fill((0, 0, 0))
         if bg:
@@ -90,6 +93,7 @@ def game_loop(you_1, you_2, height, bg, display):
 
         pygame.draw.rect(display, "white", you_1)
         pygame.draw.rect(display, "white", you_2)
+        ball.draw(display)
 
         pygame.display.update()
         clock.tick(60)  # fps
@@ -102,7 +106,7 @@ def main():
     you_1 = Paddle(100, height / 2 - 50)
     you_2 = Paddle(width - 110, height / 2 - 50)
     ball = Ball(width / 2 - 10, height / 2 - 10)
-    game_loop(you_1, you_2, ball, height, bg, display)
+    game_loop(you_1, you_2, ball, width, height, bg, display)
 
 
 if __name__ == "__main__":
