@@ -47,10 +47,11 @@ class Ball:
         self.radius = radius
 
     def move(self):
-        self.ball.x += self.speed
+        self.ball.x += self.speed_x
+        self.ball.y += self.speed_y
 
     def draw(self, display):
-        pygame.draw.ellipse(display, "white", self.rect)
+        pygame.draw.ellipse(display, "yellow", self.ball)
 
 
 """
