@@ -102,7 +102,7 @@ def main():
     height, width, display, bg = (
         screen_setup()
     )  # used chat gpt to help debug main functions here
-    you_1, you_2 = Paddles(height, width)
+    you_1, you_2 = Paddles(width, height)
     game_loop(you_1, you_2, height, bg, display)
 
 
