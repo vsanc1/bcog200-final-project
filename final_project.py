@@ -40,7 +40,7 @@ class Paddle:
 
 
 class Ball:
-    def __init__(self, x, y, radius=10, speed_x=3, speed_y=3):
+    def __init__(self, x, y, radius=10, speed_x=2, speed_y=2):
         self.ball = pygame.Rect(x, y, radius * 2, radius * 2)
         self.speed_x = speed_x
         self.speed_y = speed_y
@@ -55,7 +55,7 @@ class Ball:
 
 
 # game loop with attaching keys to paddles
-def game_loop(you_1, you_2, ball, width, height, bg, display, speed_X, speed_y):
+def game_loop(you_1, you_2, ball, height, bg, display):
     clock = pygame.time.Clock()
 
     while True:
@@ -82,10 +82,8 @@ def game_loop(you_1, you_2, ball, width, height, bg, display, speed_X, speed_y):
 
         ball.move()
 
-        if Ball >= height:
-            speed_x = -1
-        if Ball <= 0:
-            speed_y = 1
+        if ball.ball.bottom >= height or ball.ball.top <= 0:
+            ball.speed_y *= -1
 
         display.fill((0, 0, 0))
         if bg:
@@ -106,7 +104,7 @@ def main():
     you_1 = Paddle(100, height / 2 - 50)
     you_2 = Paddle(width - 110, height / 2 - 50)
     ball = Ball(width / 2 - 10, height / 2 - 10)
-    game_loop(you_1, you_2, ball, width, height, bg, display)
+    game_loop(you_1, you_2, ball, height, bg, display)
 
 
 if __name__ == "__main__":
