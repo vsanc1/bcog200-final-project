@@ -3,9 +3,8 @@ import sys
 
 pygame.init()
 
+
 # screen stuff
-
-
 def screen_setup():
     width = 900
     height = 600
@@ -52,20 +51,6 @@ class Ball:
 
     def draw(self, display):
         pygame.draw.ellipse(display, "yellow", self.ball)
-
-
-"""
-# OG paddles stuff
-def paddles(height, width):
-    you_1 = pygame.Rect(width - 800, int(height / 2 - 50), 10, 100)
-    you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
-
-    return you_1, you_2
-"""
-
-
-def ball():
-    pass
 
 
 # game loop with attaching keys to paddles
@@ -116,7 +101,8 @@ def main():
     )  # used chat gpt to help debug main functions here
     you_1 = Paddle(100, height / 2 - 50)
     you_2 = Paddle(width - 110, height / 2 - 50)
-    game_loop(you_1, you_2, height, bg, display)
+    ball = Ball(width / 2 - 10, height / 2 - 10)
+    game_loop(you_1, you_2, ball, height, bg, display)
 
 
 if __name__ == "__main__":
