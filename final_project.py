@@ -21,16 +21,22 @@ def screen_setup():
     return height, width, display, bg
 
 
-class Paddles:
+class Paddle:
     def __init__(self, x, y, width=10, height=100):
         self.rect = pygame.Rect(x, y, width, height)
         self.speed = 2
 
-        self.you_1 = pygame.Rect(width - 800, int(height / 2 - 50), 10, 100)
-        self.you_2 = pygame.Rect(width - 110, int(height / 2 - 50), 10, 100)
+    def move_up(self):
+        pass
+
+    def move_down(self):
+        pass
 
     def speed_boost(self):
         pass
+
+    def draw(self, display):
+        pygame.draw.rect(display, "white", self.rect)
 
 
 class Ball:
@@ -102,7 +108,8 @@ def main():
     height, width, display, bg = (
         screen_setup()
     )  # used chat gpt to help debug main functions here
-    you_1, you_2 = Paddles(width, height)
+    you_1 = Paddle(width, height)
+    you_2 = Paddle(width, height)
     game_loop(you_1, you_2, height, bg, display)
 
 
