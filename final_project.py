@@ -40,13 +40,14 @@ class Paddle:
 
 
 class Ball:
-    def __init__(self, x, y, radius=10, speed=3):
-        self.ball = pygame.Rect(x, y, radius=10)
-        self.speed = 3
+    def __init__(self, x, y, radius=10, speed_x=3, speed_y=3):
+        self.ball = pygame.Rect(x, y, radius * 2, radius * 2)
+        self.speed_x = speed_x
+        self.speed_y = speed_y
         self.radius = radius
 
     def move(self):
-        self.rect.x += self.speed
+        self.ball.x += self.speed
 
     def draw(self, display):
         pygame.draw.ellipse(display, "white", self.rect)
@@ -112,8 +113,8 @@ def main():
     height, width, display, bg = (
         screen_setup()
     )  # used chat gpt to help debug main functions here
-    you_1 = Paddle(width, height)
-    you_2 = Paddle(width, height)
+    you_1 = Paddle(100, height / 2 - 50)
+    you_2 = Paddle(width - 110, height / 2 - 50)
     game_loop(you_1, you_2, height, bg, display)
 
 
