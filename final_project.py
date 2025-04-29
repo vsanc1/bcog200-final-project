@@ -27,10 +27,10 @@ class Paddle:
         self.speed = 2
 
     def move_up(self):
-        pass
+        self.rect.y -= self.speed
 
     def move_down(self):
-        pass
+        self.rect.y += self.speed
 
     def speed_boost(self):
         pass
