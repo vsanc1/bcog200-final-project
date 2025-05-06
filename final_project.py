@@ -21,6 +21,7 @@ def screen_setup():
     return height, width, display, bg
 
 
+# paddle object
 class Paddle:
     def __init__(self, x, y, width=10, height=100):
         self.rect = pygame.Rect(x, y, width, height)
@@ -39,6 +40,7 @@ class Paddle:
         pygame.draw.rect(display, "white", self.rect)
 
 
+# ball object
 class Ball:
     def __init__(self, x, y, radius=10, speed_x=2, speed_y=2):
         self.ball = pygame.Rect(x, y, radius * 2, radius * 2)
@@ -82,7 +84,7 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
 
         ball.move()
 
-        # bounce
+        # bounce off top and bottom
         if ball.ball.bottom >= height or ball.ball.top <= 0:
             ball.speed_y *= -1
 
