@@ -22,6 +22,6 @@ python final_project.py
 
 
 ## Testing
-You can test the file by running it in your terminal. You will first need to type: pip install pygame. Then, you can run my final_project.py file. A screen should show up with two paddles, which you will be able to control with keys in the future. 
+When running the game, you will see a screen with paddles and a ball. You can control the left paddle with W and S, and the right paddle with your UP and DOWN arrow keys.  The paddles should not move off the screen. The ball should bounce off the top and bottom, and reset in the middle if you do not hit it with a paddle. Movement should be smooth. You will be playing against yourself, and there will be a scoreboard at the top of the screen. If you fail to hit a ball, the paddle that sent that ball gains a point. Once you have reached a certain point threshold, you may press G to gain a powerup. 
 
 
