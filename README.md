@@ -12,10 +12,10 @@ hello!
 
 ## Installation 
 
-#Install the required dependencies
+### Install the required dependencies
 pip install pygame
 
-#Run the game in your terminal
+#### Run the game in your terminal
 python final_project.py
 
 
