@@ -54,8 +54,8 @@ class Ball:
         pygame.draw.ellipse(display, "#66ccff", self.ball)
 
 
-# game loop with attaching keys to paddles
-def game_loop(you_1, you_2, ball, height, bg, display):
+# game loop with paddle and ball logic
+def game_loop(you_1, you_2, ball, width, height, bg, display):
     clock = pygame.time.Clock()
 
     while True:
@@ -82,8 +82,13 @@ def game_loop(you_1, you_2, ball, height, bg, display):
 
         ball.move()
 
+        # bounce
         if ball.ball.bottom >= height or ball.ball.top <= 0:
             ball.speed_y *= -1
+
+        # reset if offscreen
+        if ball.ball.left <= 0 or ball.ball.right >= width:
+            ball.ball.center = (width / 2, height / 2)
 
         display.fill((0, 0, 0))
         if bg:
@@ -100,11 +105,11 @@ def game_loop(you_1, you_2, ball, height, bg, display):
 def main():
     height, width, display, bg = (
         screen_setup()
-    )  # used chat gpt to help debug main functions here
+    )  # used chat gpt to help me see how I was incorrectly passing arguments on April 18th 2025
     you_1 = Paddle(100, height / 2 - 50)
     you_2 = Paddle(width - 110, height / 2 - 50)
     ball = Ball(width / 2 - 10, height / 2 - 10)
-    game_loop(you_1, you_2, ball, height, bg, display)
+    game_loop(you_1, you_2, ball, width, height, bg, display)
 
 
 if __name__ == "__main__":
