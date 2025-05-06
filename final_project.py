@@ -1,6 +1,6 @@
 import pygame
 import sys
-import random
+from random import randint
 
 pygame.init()
 
@@ -25,7 +25,7 @@ def screen_setup():
 class Paddle:
     def __init__(self, x, y, width=10, height=100):
         self.rect = pygame.Rect(x, y, width, height)
-        self.speed = 2
+        self.speed = 4
 
     def move_up(self):
         self.rect.y -= self.speed
@@ -33,7 +33,10 @@ class Paddle:
     def move_down(self):
         self.rect.y += self.speed
 
-    def speed_boost(self):
+    def length_boost(self):
+        pass
+
+    def speed_bost(self):
         pass
 
     def draw(self, display):
@@ -42,7 +45,7 @@ class Paddle:
 
 # ball object
 class Ball:
-    def __init__(self, x, y, radius=10, speed_x=2, speed_y=2):
+    def __init__(self, x, y, radius=10, speed_x=3, speed_y=3):
         self.ball = pygame.Rect(x, y, radius * 2, radius * 2)
         self.speed_x = speed_x
         self.speed_y = speed_y
@@ -70,17 +73,17 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
 
         if keys_pressed[pygame.K_UP]:
             if you_2.rect.top > 0:
-                you_2.rect.top -= 2
+                you_2.move_up()
         if keys_pressed[pygame.K_DOWN]:
             if you_2.rect.bottom < height:
-                you_2.rect.bottom += 2
+                you_2.move_down()
 
         if keys_pressed[pygame.K_w]:
             if you_1.rect.top > 0:
-                you_1.rect.top -= 2
+                you_1.move_up()
         if keys_pressed[pygame.K_s]:
             if you_1.rect.bottom < height:
-                you_1.rect.bottom += 2
+                you_1.move_down()
 
         ball.move()
 
@@ -92,6 +95,13 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         if ball.ball.left <= 0 or ball.ball.right >= width:
             ball.ball.center = (width / 2, height / 2)
 
+        # ball hitting paddles - https://www.geeksforgeeks.org/adding-collisions-using-pygame-rect-colliderect-in-pygame/
+        if ball.ball.colliderect(you_1.rect):
+            ball.speed_x *= -1
+
+        if ball.ball.colliderect(you_2.rect):
+            ball.speed_x *= -1
+
         display.fill((0, 0, 0))
         if bg:
             display.blit(bg, (0, 0))
@@ -102,6 +112,10 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
 
         pygame.display.update()
         clock.tick(60)  # fps
+
+
+def power_up(you_1, you_2):
+    pass
 
 
 def main():
