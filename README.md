@@ -11,10 +11,11 @@ hello!
   c. The project will have a function that creates power ups and applies them to the paddle  
 
 ## Installation 
-# Install the required dependencies
+
+#Install the required dependencies
 pip install pygame
 
-# Run the game in your terminal
+#Run the game in your terminal
 python final_project.py
 
 
