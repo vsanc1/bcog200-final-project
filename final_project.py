@@ -63,6 +63,9 @@ class Ball:
 def game_loop(you_1, you_2, ball, width, height, bg, display):
     clock = pygame.time.Clock()
 
+    pygame.mixer.music.load("music.mp3")
+    pygame.mixer.music.play(-1)
+
     you_1_score = 0
     you_2_score = 0
     font = pygame.font.SysFont("Comfortaa", 40)
