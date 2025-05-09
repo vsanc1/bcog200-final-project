@@ -96,7 +96,12 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
             ball.speed_y *= -1
 
         # reset if offscreen
-        if ball.ball.left <= 0 or ball.ball.right >= width:
+        if ball.ball.left <= 0:
+            you_2_score += 1
+            ball.ball.center = (width / 2, height / 2)
+
+        if ball.ball.right >= width:
+            you_1_score += 1
             ball.ball.center = (width / 2, height / 2)
 
         # ball hitting paddles - https://www.geeksforgeeks.org/adding-collisions-using-pygame-rect-colliderect-in-pygame/
