@@ -11,7 +11,7 @@ def screen_setup():
     height = 600
 
     display = pygame.display.set_mode((900, 600))
-    font = pygame.font.SysFont("Comfortaa", int(width / 20))
+    font = pygame.font.SysFont("Comfortaa", 40)
     bg = pygame.image.load("background2.jpg")
     bg = pygame.transform.scale(bg, (width, height))
     pygame.display.set_caption("Valeria Final Project Ping Pong")
@@ -63,6 +63,10 @@ class Ball:
 def game_loop(you_1, you_2, ball, width, height, bg, display):
     clock = pygame.time.Clock()
 
+    you_1_score = 0
+    you_2_score = 0
+    font = pygame.font.SysFont("Comfortaa", 40)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -105,6 +109,15 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         display.fill((0, 0, 0))
         if bg:
             display.blit(bg, (0, 0))
+
+        you_1_score_text = f"Your score: {you_1_score}"
+        you_2_score_text = f"Your 2nd score: {you_2_score}"
+
+        you_1_score_render = font.render(str(you_1_score_text), True, "white")
+        you_2_score_render = font.render(str(you_2_score_text), True, "white")
+
+        display.blit(you_1_score_render, (150, 10))
+        display.blit(you_2_score_render, (width - 350, 10))
 
         pygame.draw.rect(display, "white", you_1)
         pygame.draw.rect(display, "white", you_2)
