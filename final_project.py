@@ -118,15 +118,18 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         if bg:
             display.blit(bg, (0, 0))
 
+        # scoreboard text
         you_1_score_text = f"Your score: {you_1_score}"
         you_2_score_text = f"Your 2nd score: {you_2_score}"
 
+        # scoreboard show up onscreen
         you_1_score_render = font.render(str(you_1_score_text), True, "white")
         you_2_score_render = font.render(str(you_2_score_text), True, "white")
 
         display.blit(you_1_score_render, (150, 10))
         display.blit(you_2_score_render, (width - 350, 10))
 
+        # showing paddle objects
         pygame.draw.rect(display, "white", you_1)
         pygame.draw.rect(display, "white", you_2)
         ball.draw(display)
