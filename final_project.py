@@ -33,11 +33,8 @@ class Paddle:
     def move_down(self):
         self.rect.y += self.speed
 
-    def length_boost(self):
-        pass
-
-    def speed_bost(self):
-        pass
+    def length_boost(self):  # this is a power up that increases paddle length
+        self.rect.height += 1
 
     def draw(self, display):
         pygame.draw.rect(display, "white", self.rect)
@@ -65,6 +62,8 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
 
     pygame.mixer.music.load("music.mp3")
     pygame.mixer.music.play(-1)
+
+    powerup_sfx = pygame.mixer.Sound("power_up.mp3")
 
     you_1_score = 0
     you_2_score = 0
@@ -133,6 +132,14 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         pygame.draw.rect(display, "white", you_1)
         pygame.draw.rect(display, "white", you_2)
         ball.draw(display)
+
+        if you_2_score - you_1_score >= 3:
+            powerup_sfx.play()
+            you_1.length_boost()
+
+        if you_1_score - you_2_score >= 3:
+            powerup_sfx.play()
+            you_2.length_boost()
 
         pygame.display.update()
         clock.tick(60)  # fps
