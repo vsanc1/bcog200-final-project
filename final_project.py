@@ -152,13 +152,48 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         clock.tick(60)  # fps
 
 
+def intro_menu(display, width, height, font):
+    font = pygame.font.SysFont("Comfortaa", 30)
+    title_font = pygame.font.SysFont("Comfortaa", 40, bold=True)
+
+    intro = [
+        """Hello! Welcome to my game. 
+             You will play pong with yourself or a friend.
+             Use W S and the UP and DOWN arrows to control the paddles.
+             When the opposing score is 3 greater, a power up will activate.
+             Press SPACE to play.
+             """
+    ]
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit
+                sys.exit
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                running = False
+
+        display.fill((0, 0, 0))
+        for i, line in enumerate(intro):
+            text_surface = font.render(line, True, "pink")
+            text_rect = text_surface.get_rect(center=(width // 2, 150 + i * 50))
+            display.blit(text_surface, text_rect)
+
+            pygame.display.update()
+
+
 def main():
     height, width, display, bg = (
         screen_setup()
     )  # used chat gpt to help me see how I was incorrectly passing arguments on April 18th 2025
+
+    intro_menu(display, width, height, font)
+
     you_1 = Paddle(100, height / 2 - 50)
     you_2 = Paddle(width - 110, height / 2 - 50)
     ball = Ball(width / 2 - 10, height / 2 - 10)
+
     game_loop(you_1, you_2, ball, width, height, bg, display)
 
 
