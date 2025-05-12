@@ -1,6 +1,5 @@
 import pygame
 import sys
-from random import randint
 
 pygame.init()
 
@@ -26,6 +25,8 @@ class Paddle:
     def __init__(self, x, y, width=10, height=100):
         self.rect = pygame.Rect(x, y, width, height)
         self.speed = 4
+        self.powered_up = False
+        self.powerup_start_time = 0
 
     def move_up(self):
         self.rect.y -= self.speed
@@ -34,7 +35,12 @@ class Paddle:
         self.rect.y += self.speed
 
     def length_boost(self):  # this is a power up that increases paddle length
-        self.rect.height += 1
+        self.rect.height += 80
+        self.powered_up = True
+        # self.powerup_start_time
+
+    def de_power(self):  # reverts to normal state
+        pass
 
     def draw(self, display):
         pygame.draw.rect(display, "white", self.rect)
@@ -133,20 +139,17 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         pygame.draw.rect(display, "white", you_2)
         ball.draw(display)
 
-        if you_2_score - you_1_score >= 3:
+        # power up activation after opponents score is 3 greater
+        if you_2_score - you_1_score >= 3 and not you_1.powered_up:
             powerup_sfx.play()
             you_1.length_boost()
 
-        if you_1_score - you_2_score >= 3:
+        if you_1_score - you_2_score >= 3 and not you_2.powered_up:
             powerup_sfx.play()
             you_2.length_boost()
 
         pygame.display.update()
         clock.tick(60)  # fps
-
-
-def power_up(you_1, you_2):
-    pass
 
 
 def main():
