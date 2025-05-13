@@ -6,6 +6,11 @@ This repository contains the code for my final project, a Ping Pong Game made wi
 
 ## What is this game?
 
+This is my take on the classic Ping Pong. It is a simple Ping Pong Game made with pygame, but the twist is that it has 
+a powerup built into it. You play against yourself or with a friend. When you miss hitting the ball with the paddle, the
+other side's score goes up. When one side has 3 more points than the other, a power up takes place automatically and lasts
+10 seconds if you level the scores to be less than 3 apart! I added music, a cute background, and sound effects for a 
+personal touch. 
 
 ## Installation 
 
