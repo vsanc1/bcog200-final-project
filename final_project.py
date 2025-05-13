@@ -152,32 +152,47 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
         clock.tick(60)  # fps
 
 
-def intro_menu(display, width, height, font):
+# popup menu with intro / instructions / description
+def intro_menu(display, width, height, bg):
     font = pygame.font.SysFont("Comfortaa", 30)
     title_font = pygame.font.SysFont("Comfortaa", 40, bold=True)
 
-    intro = [
-        """Hello! Welcome to my game. 
-             You will play pong with yourself or a friend.
-             Use W S and the UP and DOWN arrows to control the paddles.
-             When the opposing score is 3 greater, a power up will activate.
-             Press SPACE to play.
-             """
-    ]
+    intro = (
+        "Hello! Welcome to my game.",
+        "",
+        "You will play pong with yourself or a friend.",
+        "Use W S and the UP and DOWN arrows to control the paddles.",
+        "When the opposing score is 3 greater, a power up will activate.",
+        "",
+        "Press SPACE to play.",
+    )
 
-    running = True
-    while running:
+    screen_width = 700
+    screen_height = 300
+    screen_x = (width - screen_width) // 2
+    screen_y = (height - screen_height) // 2
+    screen_rect = pygame.Rect(screen_x, screen_y, screen_width, screen_height)
+
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit
-                sys.exit
+                pygame.quit()
+                sys.exit()
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                running = False
+                return
 
-        display.fill((0, 0, 0))
+        display.fill((255, 255, 255))
+        if bg:
+            display.blit(bg, (0, 0))
+
+        pygame.draw.rect(display, (255, 255, 255), screen_rect)
+        pygame.draw.rect(display, (40, 40, 40), screen_rect, 3)
+
         for i, line in enumerate(intro):
             text_surface = font.render(line, True, "pink")
-            text_rect = text_surface.get_rect(center=(width // 2, 150 + i * 50))
+            text_rect = text_surface.get_rect(
+                center=(screen_rect.centerx, screen_rect.top + 70 + i * 30)
+            )
             display.blit(text_surface, text_rect)
 
             pygame.display.update()
@@ -188,7 +203,7 @@ def main():
         screen_setup()
     )  # used chat gpt to help me see how I was incorrectly passing arguments on April 18th 2025
 
-    intro_menu(display, width, height, font)
+    intro_menu(display, width, height, bg)
 
     you_1 = Paddle(100, height / 2 - 50)
     you_2 = Paddle(width - 110, height / 2 - 50)
