@@ -12,6 +12,16 @@ other side's score goes up. When one side has 3 more points than the other, a po
 10 seconds if you level the scores to be less than 3 apart! I added music, a cute background, and sound effects for a 
 personal touch. 
 
+- Other details:
+  - Object oriented program with objects: Ball and Paddles
+  - Main game loop function that implements a majority of the code:
+    - paddle controls 
+    - ball movement logic
+    - ball paddle interaction 
+    - paddle powerup logic
+  - Intro Screen function
+    
+
 ## Installation 
 
 #### Install the required dependencies
