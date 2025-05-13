@@ -1,5 +1,6 @@
 # Ping Pong Game with Power Ups
-[insert image here]
+<img width="671" alt="image" src="https://github.com/user-attachments/assets/ff5a8178-cfc4-4fd1-a0e3-ce08acaf55c7" />
+
 
 -For my final project, I intend to make a ping pong game. It has been done a lot, so in order to make it more original, I think I am going to add power up functions. The power ups might make the paddle larger or move faster. I will also try to add unique graphics.
 
