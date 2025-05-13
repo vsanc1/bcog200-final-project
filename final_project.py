@@ -68,7 +68,9 @@ class Ball:
 def game_loop(you_1, you_2, ball, width, height, bg, display):
     clock = pygame.time.Clock()
 
-    pygame.mixer.music.load("music.mp3")
+    pygame.mixer.music.load(
+        "music.mp3"
+    )  # https://pythonprogramming.net/adding-sounds-music-pygame/
     pygame.mixer.music.play(-1)
 
     powerup_sfx = pygame.mixer.Sound("power_up.mp3")
@@ -101,7 +103,7 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
 
         ball.move()
 
-        # 10 seconds for powerup
+        # 10 seconds for powerup: https://www.pygame.org/docs/ref/time.html#pygame.time.get_ticks
         if you_1.powered_up:
             elapsed = pygame.time.get_ticks() - you_1.powerup_start_time
             if elapsed >= 10000:
