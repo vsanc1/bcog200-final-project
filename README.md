@@ -31,10 +31,12 @@ python final_project.py
   - If you level the scores, the powerup will dissapear after 10 seconds.
 
 ## Code structure
-- src/ - Core implementation
+- Core implementation
   - final_project.py - the entire code for the ping pong game
-- misc/ - Sounds and Images
-  -       
+- Sounds and Images
+  - background2.jpg - the background
+  - music.mp3 - background music
+  - powr_up.mp3 - power up sound effect
 ## Controls
 - W and S moves the left paddle UP (W) and DOWN (S)
 - UP and DOWN arrow keys control the right paddle. 
