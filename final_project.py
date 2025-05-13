@@ -37,10 +37,12 @@ class Paddle:
     def length_boost(self):  # this is a power up that increases paddle length
         self.rect.height += 80
         self.powered_up = True
-        # self.powerup_start_time
+        self.powerup_start_time = pygame.time.get_ticks()
 
     def de_power(self):  # reverts to normal state
-        pass
+        self.rect.height -= 80
+        self.powered_up = False
+        self.pwerup_start_time = 0
 
     def draw(self, display):
         pygame.draw.rect(display, "white", self.rect)
@@ -98,6 +100,17 @@ def game_loop(you_1, you_2, ball, width, height, bg, display):
                 you_1.move_down()
 
         ball.move()
+
+        # 10 seconds for powerup
+        if you_1.powered_up:
+            elapsed = pygame.time.get_ticks() - you_1.powerup_start_time
+            if elapsed >= 10000:
+                you_1.de_power()
+
+        if you_2.powered_up:
+            elapsed = pygame.time.get_ticks() - you_2.powerup_start_time
+            if elapsed >= 10000:
+                you_2.de_power()
 
         # bounce off top and bottom
         if ball.ball.bottom >= height or ball.ball.top <= 0:
@@ -195,7 +208,7 @@ def intro_menu(display, width, height, bg):
             )
             display.blit(text_surface, text_rect)
 
-            pygame.display.update()
+        pygame.display.update()
 
 
 def main():
